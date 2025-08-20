@@ -1,0 +1,147 @@
+/* Custom Tailwind styling for react-date-range */
+@import "tailwindcss";
+
+.custom-date-range .rdrCalendarWrapper {
+  @apply bg-[var(--background-primary)] text-[var(--text)] rounded-xl 
+  shadow-[var(--box-shadow)] ;
+}
+
+/* --- Date display (top inputs) --- */
+.custom-date-range .rdrDateDisplayWrapper {
+  @apply bg-[var(--background-secondary)]/50 rounded-lg;
+}
+
+
+/* individual input “chips” */
+.custom-date-range .rdrDateDisplayItem {
+  @apply bg-[var(--background-primary)] border border-[var(--border-outline)] rounded-lg overflow-hidden;
+}
+
+.custom-date-range .rdrDateDisplayItemActive {
+  @apply border-[var(--border-outline)] ring-1 ring-[var(--color-primary)];
+}
+
+/* the actual input fields */
+.custom-date-range .rdrDateInput input {
+  @apply bg-transparent text-[var(--text)] font-semibold placeholder-[var(--text)]/60 px-3 py-2 outline-none;
+}
+
+
+/* --- Prev/Next navigation buttons --- */
+.custom-date-range .rdrNextPrevButton {
+  @apply   rounded-md h-7 w-7
+ bg-[var(--background-secondary)]/40 border border-[var(--border-outline)] cursor-pointer transition text-[var(--text)];
+}
+.custom-date-range .rdrNextPrevButton i{
+  @apply   !text-[var(--title)];
+}
+
+.custom-date-range .rdrNextPrevButton:hover {
+  @apply bg-[var(--background-secondary)]/20  ;
+}
+
+
+
+/* If icons look too faint, bump their contrast */
+.custom-date-range .rdrNextPrevButton i,
+.custom-date-range .rdrNextPrevButton  {
+  @apply 
+  text-[var(--text)];
+}
+/* Generic nav button arrows */
+.custom-date-range .rdrNextPrevButton i::before {
+  @apply border-gray-700; /* changes arrow color */
+}
+
+/* Left arrow */
+.custom-date-range .rdrPprevButton::before {
+  @apply !border-r-gray-700; /* tweak if direction looks off */
+}
+
+/* Right arrow */
+.custom-date-range .rdrNextButton::before {
+  @apply border-l-gray-900;
+}
+
+
+/* Disabled nav (when month is out of range) */
+.custom-date-range .rdrNextPrevButton.rdrDisabled {
+  @apply opacity-40 cursor-not-allowed;
+}
+
+
+.custom-date-range .rdrMonthAndYearPickers select {
+  @apply bg-[var(--background-primary)] text-[var(--text)]  rounded-md w-20 px-0 py-1 border border-[var(--border-outline)];
+}
+
+
+.custom-date-range .rdrDayNumber span {
+  @apply text-[var(--text)] font-medium ;
+}
+
+.custom-date-range .rdrDayToday .rdrDayNumber span {
+  @apply text-[var(--color-primary)] font-bold;
+}
+
+
+.custom-date-range .rdrDay.rdrDaySelected,
+.custom-date-range .rdrInRange,
+.custom-date-range .rdrStartEdge,
+.custom-date-range .rdrEndEdge {
+  @apply bg-[var(--color-primary)]/30 text-[var(--text)] ;
+}
+
+.custom-date-range .rdrDayDisabled {
+  @apply text-gray-500 bg-[var(--background-primary)];
+}
+
+.custom-date-range .rdrMonthPicker,
+.custom-date-range .rdrYearPicker {
+  @apply bg-[var(--background-primary)] text-[var(--text)] rounded-lg;
+
+}
+
+
+.custom-date-range .rdrMonthAndYearPickers option:checked {
+  @apply bg-[var(--color-primary)] text-[var(--text)];
+}
+
+
+
+
+/* DATE STYLING */
+
+/* Entire selected range highlight */
+.custom-date-range .rdrInRange {
+  @apply bg-[var(--color-primary)]/70; /* light emerald fill */
+}
+
+/* Start of range */
+.custom-date-range .rdrStartEdge {
+  @apply bg-[var(--color-primary)]/70 text-[var(--text)] rounded-l-xl;
+}
+
+/* End of range */
+.custom-date-range .rdrEndEdge {
+  @apply bg-[var(--color-primary)]/70 text-[var(--text)] rounded-r-xl;
+}
+
+/* Hovered but not yet selected */
+.custom-date-range .rdrDayHovered {
+  @apply bg-[var(--color-primary)]/70 rounded-full  ;
+}
+
+/* The preview range when dragging */
+.custom-date-range .rdrDayInPreview {
+  @apply bg-[var(--color-primary)]/20  border-0 ;
+}
+
+/* Start of preview (mouse down date) */
+.custom-date-range .rdrDayStartPreview {
+  @apply border-0  rounded-l-xl;
+}
+
+/* End of preview (hovered date) */
+.custom-date-range .rdrDayEndPreview {
+  @apply border-0  rounded-r-xl;
+}

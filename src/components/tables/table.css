@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@layer components {
+  table {
+    @apply w-full border-collapse text-sm text-[var(--text)] ;
+  }
+
+  table th,
+  table td {
+    @apply  px-2 py-4 text-left pl-5  ;
+  }
+
+  table th {
+    @apply  px-2 py-3 pl-5 ;
+  }
+
+  thead tr,
+  tfoot tr {
+    @apply bg-[var(--background-primary)]/90  text-[var(--text)]  uppercase text-xs text-center;
+  }
+
+   table th, tbody tr {
+    @apply
+      border-t border-[var(--border-outline)]
+    ;
+   }
+
+  tbody tr:nth-child(odd) {
+    @apply bg-[var(--background-primary)] ;
+  }
+
+  tbody tr:nth-child(even) {
+    @apply bg-[var(--background-primary)];
+  }
+
+  tbody tr:hover {
+    @apply bg-[var(--background-primary)]/92;
+  }
+}
