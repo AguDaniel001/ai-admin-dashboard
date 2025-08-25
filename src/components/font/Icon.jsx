@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Icon({name, className}) {
+function Icon({name, className, children}) {
   return (
-    <div className={className}><i>{name}</i></div>
+    <div className={className}><i>{children}</i></div>
   )
 }
 

@@ -2,19 +2,19 @@
 @import "tailwindcss";
 
 .custom-date-range .rdrCalendarWrapper {
-  @apply bg-[var(--background-primary)] text-[var(--text)] rounded-xl 
+  @apply bg-[var(--bg-primary)] text-[var(--text)] rounded-xl 
   shadow-[var(--box-shadow)] ;
 }
 
 /* --- Date display (top inputs) --- */
 .custom-date-range .rdrDateDisplayWrapper {
-  @apply bg-[var(--background-secondary)]/50 rounded-lg;
+  @apply bg-[var(--bg-secondary)]/50 rounded-lg;
 }
 
 
 /* individual input “chips” */
 .custom-date-range .rdrDateDisplayItem {
-  @apply bg-[var(--background-primary)] border border-[var(--border-outline)] rounded-lg overflow-hidden;
+  @apply bg-[var(--bg-primary)] border border-[var(--border-outline)] rounded-lg overflow-hidden;
 }
 
 .custom-date-range .rdrDateDisplayItemActive {
@@ -30,14 +30,14 @@
 /* --- Prev/Next navigation buttons --- */
 .custom-date-range .rdrNextPrevButton {
   @apply   rounded-md h-7 w-7
- bg-[var(--background-secondary)]/40 border border-[var(--border-outline)] cursor-pointer transition text-[var(--text)];
+ bg-[var(--bg-secondary)]/40 border border-[var(--border-outline)] cursor-pointer transition text-[var(--text)];
 }
 .custom-date-range .rdrNextPrevButton i{
   @apply   !text-[var(--title)];
 }
 
 .custom-date-range .rdrNextPrevButton:hover {
-  @apply bg-[var(--background-secondary)]/20  ;
+  @apply bg-[var(--bg-secondary)]/20  ;
 }
 
 
@@ -69,11 +69,9 @@
   @apply opacity-40 cursor-not-allowed;
 }
 
-
 .custom-date-range .rdrMonthAndYearPickers select {
-  @apply bg-[var(--background-primary)] text-[var(--text)]  rounded-md w-20 px-0 py-1 border border-[var(--border-outline)];
+  @apply bg-[var(--bg-primary)] text-[var(--text)]  rounded-md w-20 px-0 py-1 border border-[var(--border-outline)];
 }
-
 
 .custom-date-range .rdrDayNumber span {
   @apply text-[var(--text)] font-medium ;
@@ -83,7 +81,6 @@
   @apply text-[var(--color-primary)] font-bold;
 }
 
-
 .custom-date-range .rdrDay.rdrDaySelected,
 .custom-date-range .rdrInRange,
 .custom-date-range .rdrStartEdge,
@@ -91,22 +88,16 @@
   @apply bg-[var(--color-primary)]/30 text-[var(--text)] ;
 }
 
-.custom-date-range .rdrDayDisabled {
-  @apply text-gray-500 bg-[var(--background-primary)];
-}
 
 .custom-date-range .rdrMonthPicker,
 .custom-date-range .rdrYearPicker {
-  @apply bg-[var(--background-primary)] text-[var(--text)] rounded-lg;
+  @apply bg-[var(--bg-primary)] text-[var(--text)] rounded-lg;
 
 }
-
 
 .custom-date-range .rdrMonthAndYearPickers option:checked {
   @apply bg-[var(--color-primary)] text-[var(--text)];
 }
-
-
 
 
 /* DATE STYLING */
@@ -128,12 +119,16 @@
 
 /* Hovered but not yet selected */
 .custom-date-range .rdrDayHovered {
-  @apply bg-[var(--color-primary)]/70 rounded-full  ;
+  @apply  text-[var(--text)] rounded-full  ;
 }
 
 /* The preview range when dragging */
 .custom-date-range .rdrDayInPreview {
-  @apply bg-[var(--color-primary)]/20  border-0 ;
+  @apply 
+  bg-[var(--color-primary)]/20  
+  border-0 
+  text-[var(--text)]
+  ;
 }
 
 /* Start of preview (mouse down date) */
@@ -143,5 +138,33 @@
 
 /* End of preview (hovered date) */
 .custom-date-range .rdrDayEndPreview {
-  @apply border-0  rounded-r-xl;
+  @apply border-0  rounded-r-xl bg-[var(--color-primary)]/20  ;
 }
+
+/* Defined Range */
+.rdrDefinedRangesWrapper {
+  @apply bg-[var(--bg-primary)] border-0 shadow-md rounded-lg p-2 ;
+}
+
+.rdrDefinedRangesWrapper .rdrStaticRange {
+  @apply cursor-pointer bg-[var(--bg-primary)] border-[var(--border-outline)] hover:bg-[var(--bg-primary-dark)] text-xs px-0 py-0 rounded;
+}
+
+.rdrDefinedRangesWrapper .rdrStaticRangeLabel {
+  @apply text-[var(--text)]  bg-[var(--bg-primary)] hover:bg-[var(--bg-primary-dark)] py-[12.5px] rounded-sm ;
+}
+
+.rdrDefinedRangesWrapper .rdrStaticRangeSelected {
+  @apply bg-blue-500 text-white;
+}
+/* .rdrInputRanges {
+  @apply 
+  
+  ;
+} */
+.rdrInputRanges .rdrInputRange .rdrInputRangeInput {
+@apply 
+border-[var(--border-outline)] text-[var(--text)]
+;
+}
+

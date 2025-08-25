@@ -8,6 +8,7 @@ import {
   useRowSelect,
 } from "react-table";
 import { useStickyState } from "./useStickyState";
+import { useToggle } from "../../hooks/useToggle";
 
 import { COLUMNS } from "./columns";
 import MOCK_DATA from "./MOCK_DATA.json";
@@ -21,8 +22,8 @@ import Subtitle from "../font/SubTitle";
 import Icon from "../font/Icon";
 import Button from "../Button";
 import Text from "../font/Text";
-import { BsArrowBarUp, BsSearch } from "react-icons/bs";
-import { FaRedo, FaRedoAlt, FaRegCalendar } from "react-icons/fa";
+import { BsArrowBarUp, BsSearch, } from "react-icons/bs";
+import { FaDownload, FaRedoAlt, FaRegCalendar } from "react-icons/fa";
 import { AiOutlineEye } from "react-icons/ai";
 import { format, isWithinInterval, isAfter, isBefore } from "date-fns";
 
@@ -32,6 +33,8 @@ import ExportButtons from "./ExportButtons";
 export const DataTable = () => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
+
+  const { isOpen, toggle, ref } = useToggle(false);
 
   // Persisted state hooks
   const [savedState, setSavedState] = useStickyState(
@@ -124,7 +127,7 @@ export const DataTable = () => {
 
   const { globalFilter, pageIndex, pageSize, hiddenColumns } = state;
 
-  // 🔹 Keep localStorage in sync when table state changes
+  // Keep localStorage in sync when table state changes
   useEffect(() => {
     setSavedState({
       pageIndex,
@@ -154,7 +157,7 @@ export const DataTable = () => {
         </div>
 
         {/* Search */}
-        <div className="icon-card flex gap-3 items-center rounded-full px-5 py-0 bg-[var(--background-secondary)]">
+        <div className="icon-card flex gap-3 items-center rounded-full px-5 py-0 bg-[var(--bg-secondary)]">
           <Icon className="text-[var(--text-muted)]" name={<BsSearch />} />
           <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         </div>
@@ -165,11 +168,11 @@ export const DataTable = () => {
             className="button-icon text-[var(--text-muted)]"
             onClick={() => setShowToggle(!showToggle)}
           >
-            <Icon name={<AiOutlineEye />} />
+            <Icon ><AiOutlineEye /></Icon>
           </Button>
           
 
-          <div className=" flex gap- relative">
+          <div className=" flex relative">
             <Button
               className="button-icon flex! gap-3 items-center rounded-r-none text-[var(--text-muted)]"
               onClick={(e) => {
@@ -177,7 +180,7 @@ export const DataTable = () => {
                 setShowCalendar((prev) => !prev);
               }}
             >
-              <Icon className="text-[var(--text-muted)]" name={<FaRegCalendar />} />
+              <Icon className="text-[var(--text-muted)]" ><FaRegCalendar /></Icon>
               <Text>
                 {dateRange[0].startDate && dateRange[0].endDate
                   ? `${format(dateRange[0].startDate, "dd MMM yyyy")} - ${format(
@@ -209,16 +212,22 @@ export const DataTable = () => {
                 ])
               }
             >
-              <Icon name={<FaRedoAlt />} />
+              <Icon><FaRedoAlt /></Icon>
             </Button>
           </div>
         </div>
       </div>
 
       <Spacer height="1.8rem" />
-      <div className="bg-[var(--background-primary)] flex items-center rounded-t-2xl px-5 h-[3.5rem]">
+      <div className="bg-[var(--bg-primary)] flex justify-between items-center rounded-t-2xl px-5 h-[3.5rem]">
         <Subtitle>All Customers</Subtitle>
-        <ExportButtons selectedFlatRows={selectedFlatRows} />
+        <Button className="" variant="none" onClick={toggle}>
+          <Icon><FaDownload /></Icon> 
+        </Button>
+        {isOpen && (
+            <ExportButtons selectedFlatRows={selectedFlatRows} />
+        )}
+        {/* <ExportButtons selectedFlatRows={selectedFlatRows} /> */}
         {/* <RowSelectionPreview selectedFlatRows={selectedFlatRows} /> */}
 
       </div>
@@ -264,7 +273,7 @@ export const DataTable = () => {
         </tbody>
       </table>
 
-      <div className="bg-[var(--background-primary)] flex items-center rounded-b-2xl px-2 h-[0.8rem]"></div>
+      <div className="bg-[var(--bg-primary)] flex items-center rounded-b-2xl px-2 h-[0.8rem]"></div>
       <Spacer height="1.5rem" />
 
       {/* Pagination */}

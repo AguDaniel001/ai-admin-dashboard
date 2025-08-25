@@ -9,7 +9,7 @@ import SubText from '../font/SubText'
 
 function SideBar() {
   return (
-    <div  className='w-[220px] bg-[var(--background-primary)] h-screen  p-[18px] rounded-r-3xl'>
+    <div  className='w-[220px] bg-[var(--bg-primary)] h-screen  p-[18px] rounded-r-3xl'>
 
 
       <h1 className='uppercase '>O m l i v i o n</h1>

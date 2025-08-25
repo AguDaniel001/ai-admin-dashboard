@@ -2,18 +2,20 @@ import React from "react";
 import clsx from "clsx";
 
 const baseStyles =
-  "inline-block  text-sm rounded-lg font-medium transition duration-100 ease-in-out h-[2.2rem] px-[0.8rem] border-0 hover:bg-[var(--background-primary)]/90 ";
+  "inline-block  text-sm rounded-lg font-medium transition duration-100 ease-in-out h-[2.2rem] px-[0.8rem] border-0 hover:bg-[var(--bg-primary)]/90 ";
 
 const variants = {
   primary: "bg-white text-black hover:bg-brand-dark focus:ring-brand",
   outline:
-    "border text-[var(--text)] bg-[var(--background-primary)] border-1 border-[var(--border-outline)] focus:bg-[var(--background-primary)]",
+    "border text-[var(--text)] bg-[var(--bg-primary)] border-1 border-[var(--border-outline)] focus:bg-[var(--bg-primary)] hover:bg-[var(--bg-primary-dark)] ",
   secondary:
     "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400",
+  none:
+    " border-0  text-[var(--text-muted)] hover:bg-[var(--bg-primary-dark)]",
 };
 
 const sizes = {
-  sm: "text-sm ",
+  sm: "text-[12px] !h-7 rounded-md ",
   md: "text-base ",
   lg: "text-lg ",
 };

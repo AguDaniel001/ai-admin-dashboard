@@ -5,8 +5,9 @@ import { saveAs } from "file-saver";
 import { Document, Packer, Paragraph, Table, TableRow, TableCell, TextRun } from "docx";
 import { jsPDF } from 'jspdf';
 import { autoTable } from 'jspdf-autotable';
+import Button from '../Button';
 
-const ExportButtons = ({ selectedFlatRows, filenameBase = "selected_rows" }) => {
+const ExportButtons = ({ selectedFlatRows, filenameBase = "customers" }) => {
   const selectedRows = (selectedFlatRows || []).map(r => r.original);
   if (!selectedRows.length) return null;
 
@@ -70,11 +71,11 @@ const ExportButtons = ({ selectedFlatRows, filenameBase = "selected_rows" }) => 
   };
 
   return (
-    <div className="flex gap-2">
-      <button onClick={exportCsv}>Export CSV</button>
-      <button onClick={exportExcel}>Export Excel</button>
-      <button onClick={exportDocx}>Export Word</button>
-      <button onClick={exportPdf}>Export PDF</button>
+    <div className="flex flex-col text-left justify-end icon-card z-2 shadow-lg mt-40 gap-1 absolute right-13 top-10 ">
+      <Button onClick={exportCsv} size="sm" >CSV</Button>
+      <Button onClick={exportExcel} size="sm" >Excel</Button>
+      <Button onClick={exportDocx} size="sm">Docx</Button>
+      <Button onClick={exportPdf} size="sm">PDF</Button>
     </div>
   );
 };

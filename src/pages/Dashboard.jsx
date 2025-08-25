@@ -1,51 +1,142 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Title from "../components/font/Title"
-import CardText from '../components/CardText'
+import LineChartStats from '../components/charts/LineChartStats'
+import LeadBarStats from '../components/charts/LeadBarStats'
 import Spacer from '../components/Spacer'
 import Icon from '../components/font/Icon'
 import Text from '../components/font/Text'
-import { FaCalendarAlt, FaRegCalendar } from 'react-icons/fa'
-import { FaBars} from 'react-icons/fa6'
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
-
-
+import { FaRegCalendar, FaRedoAlt } from 'react-icons/fa'
+import { FaBars } from 'react-icons/fa6'
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
+import Button from '../components/Button'
+import "../components/calendar/calendar.css"
+import RangePicker from '../components/calendar/RangePicker'
+import { format } from "date-fns"
+import { useStickyState } from "../components/tables/useStickyState"
+import { DefinedRange } from 'react-date-range'
 
 function Dashboard() {
+  const [showCalendar, setShowCalendar] = useState(false)
+
+
+  //Defined range
+  const [state, setState] = useState([ { startDate: new Date(new Date().setDate(new Date().getDate() - 7)), // default: last 7 days 
+  endDate: new Date(), key: "selection", }, ]);
+
+  // Date range state
+  const [dateRange, setDateRange] = useStickyState([
+    {
+      startDate: new Date(new Date().setDate(new Date().getDate() - 7)), // default: last 7 days
+      endDate: new Date(),
+      key: "selection",
+    },
+  ])
+
   return (
-    <div className=' px-10 py-6 relative'>
-      <div className='h-screen' >
-      <div className='flex justify-between '>
-        <div>
+    <div className='px-10 py-6'>
+      <div className='h-screen flex flex-col gap-5'>
+
+        {/* Header */}
+        <div className='flex justify-between relative'>
           <Title>Dashboard</Title>
+          <div className='flex gap-2 items-center'>
+
+            <div className="flex gap-0 relative">
+              {/* Calendar Toggle */}
+              <Button
+                className="button-icon flex! gap-3 items-center rounded-r-none text-[var(--text-muted)]"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setShowCalendar((prev) => !prev)
+                }}
+              >
+                <Icon className="text-[var(--text-muted)]"><FaRegCalendar /></Icon>
+                <Text>
+                  {dateRange[0].startDate && dateRange[0].endDate
+                    ? `${format(dateRange[0].startDate, "dd MMM yyyy")} - ${format(
+                        dateRange[0].endDate,
+                        "dd MMM yyyy"
+                      )}`
+                    : "Select Date"}
+                </Text>
+              </Button>
+
+            
+
+              {/* Reset Button */}
+              <Button
+                className="button-icon text-[var(--text-muted)] rounded-l-none"
+                onClick={() =>
+                  setDateRange([
+                    {
+                      startDate: null,
+                      endDate: null,
+                      key: "selection",
+                    },
+                  ])
+                }
+              >
+                <Icon><FaRedoAlt /></Icon>
+              </Button>
+
+              {/* Calendar Popup */}
+              {showCalendar && (
+                <div className=" top-12  right-0 z-20">
+                  <div className='flex '>
+                    <div className='absolute right-80 top-12'>
+                      <DefinedRange 
+                        onChange={(item) => setDateRange([item.selection])} 
+                        ranges={dateRange} 
+                      />  
+                    </div>
+                    
+                
+                    <RangePicker
+                      dateRange={dateRange}
+                      setDateRange={setDateRange}
+                      setShowCalendar={setShowCalendar}
+                    />
+                  </div>
+                 
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
-        <div className='flex gap-2 items-center'>
-         <Icon className="icon-card text-[var(--text-muted)] flex " 
-            name={<FaBars />} />
-         <div  className="icon-card flex gap-3 items-center ">
-          <Icon className="text-[var(--text-muted)]" name={<FaRegCalendar />} />
-          <Text> Jan 10, 2025 - Jan 28, 2025 </Text>
-         </div> 
-        
+        <Spacer height="0rem" />
+
+        {/* Stats Row */}
+        <div className='flex gap-5'>
+  <LineChartStats
+    title="Total Conversations"
+    label="Chatbot"
+    jsonPath="/data/chatbot.json"
+    dateRange={dateRange[0]}
+  />
+
+  <LineChartStats
+    title="Lead Growth"
+    label="Leads"
+    jsonPath="/data/leads.json"
+    dateRange={dateRange[0]}
+  />
+
+  <LineChartStats
+    title="Customer Feedback"
+    label="Feedback"
+    jsonPath="/data/feedback.json"
+    dateRange={dateRange[0]}
+  />
+</div>
+
+
+        {/* Charts Row */}
+        <div className='flex gap-5 h-[410px]'>
+          <LeadBarStats dateRange={dateRange[0]} />
+          <LineChartStats dateRange={dateRange[0]} />
         </div>
-
-      </div>
-      
-       <Spacer height="1.5rem"/>
-      {/* <Button text='Add View' variant='primary' /> */}
-
-      <div className='flex gap-4'>
-        <CardText
-        />
-        <CardText
-        />
-        <CardText
-        />
-      </div>
-       
-      
-
       </div>
     </div>
   )

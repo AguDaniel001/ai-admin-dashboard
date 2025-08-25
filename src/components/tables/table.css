@@ -16,7 +16,7 @@
 
   thead tr,
   tfoot tr {
-    @apply bg-[var(--background-primary)]/90  text-[var(--text)]  uppercase text-xs text-center;
+    @apply bg-[var(--bg-primary)]/90  text-[var(--text)]  uppercase text-xs text-center;
   }
 
    table th, tbody tr {
@@ -26,14 +26,14 @@
    }
 
   tbody tr:nth-child(odd) {
-    @apply bg-[var(--background-primary)] ;
+    @apply bg-[var(--bg-primary)] ;
   }
 
   tbody tr:nth-child(even) {
-    @apply bg-[var(--background-primary)];
+    @apply bg-[var(--bg-primary)];
   }
 
   tbody tr:hover {
-    @apply bg-[var(--background-primary)]/92;
+    @apply bg-[var(--bg-primary)]/92;
   }
 }
