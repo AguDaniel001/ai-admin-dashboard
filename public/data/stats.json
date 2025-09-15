@@ -1,0 +1,23 @@
+{
+  "chatbot": {
+    "total": 270,
+    "data": [
+      { "date": "2025-08-25", "value": 120 },
+      { "date": "2025-08-25", "value": 150 }
+    ]
+  },
+  "leads": {
+    "total": 110,
+    "data": [
+      { "date": "2025-08-25", "value": 45 },
+      { "date": "2025-08-25", "value": 65 }
+    ]
+  },
+  "feedback": {
+    "average": 4.35,
+    "data": [
+      { "date": "2025-08-25", "value": 4.5 },
+      { "date": "2025-08-25", "value": 4.2 }
+    ]
+  }
+}

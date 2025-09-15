@@ -22,7 +22,7 @@ function ThemeToggle() {
     <div>
       <Button
         onClick={toggleTheme}
-        className="text-[var(--text)] hover:text-[var(--title)] hover:!bg-transparent !bg-transparent"
+        className=" icon "
       >
         {theme === "light" ? <BsMoon /> : <BsSun />}
       </Button>

@@ -25,7 +25,7 @@ const LineChart = ({ data = [], dateRange, height = 150, className }) => {
 
           <Area
             type="monotone"
-            dataKey="uv"
+            dataKey="value"
             stroke="none"
             fill={`url(#${gradId})`}
             isAnimationActive={false}
@@ -34,7 +34,7 @@ const LineChart = ({ data = [], dateRange, height = 150, className }) => {
 
           <Line
             type="monotone"
-            dataKey="uv"
+            dataKey="value"
             stroke="#a78bfa"
             strokeWidth={2}
             dot={false}

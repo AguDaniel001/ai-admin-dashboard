@@ -5,7 +5,7 @@ import Spacer from '../components/Spacer'
 
 function Messages() {
   return (
-    <div className=' px-10 pt-6 '>
+    <div className=' page-padding '>
       <div className='h-screen' >
       <Title>Messages</Title>
        <Spacer height="1.5rem"/>

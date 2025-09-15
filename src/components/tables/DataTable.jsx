@@ -151,24 +151,25 @@ export const DataTable = () => {
 
 
       {/* Page Header */}
-      <div className="flex justify-between">
+      <div className="flex justify-between max-md:justify-start max-md:flex-col max-md:gap-3 ">
         <div>
           <Title>Leads</Title>
         </div>
 
         {/* Search */}
-        <div className="icon-card flex gap-3 items-center rounded-full px-5 py-0 bg-[var(--bg-secondary)]">
-          <Icon className="text-[var(--text-muted)]" name={<BsSearch />} />
+        <div className="icon-card flex gap-3 items-center rounded-full px-5 py-0 bg-[var(--bg-secondary)] max-lg:px-2.5 max-lg:bg-[var(--bg-primary)] max-lg:rounded-lg  max-md:flex">
+          <Icon className="text-[var(--text-muted)]" ><BsSearch /></Icon>
           <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         </div>
 
         {/* Actions */}
         <div className="flex gap-2 items-center">
+          
           <Button
             className="button-icon text-[var(--text-muted)]"
             onClick={() => setShowToggle(!showToggle)}
           >
-            <Icon ><AiOutlineEye /></Icon>
+            <Icon><AiOutlineEye /></Icon>
           </Button>
           
 
@@ -219,7 +220,8 @@ export const DataTable = () => {
       </div>
 
       <Spacer height="1.8rem" />
-      <div className="bg-[var(--bg-primary)] flex justify-between items-center rounded-t-2xl px-5 h-[3.5rem]">
+      
+      <div className="  bg-[var(--bg-primary)] flex justify-between items-center rounded-t-2xl px-5 h-[3.5rem]">
         <Subtitle>All Customers</Subtitle>
         <Button className="" variant="none" onClick={toggle}>
           <Icon><FaDownload /></Icon> 
@@ -227,53 +229,52 @@ export const DataTable = () => {
         {isOpen && (
             <ExportButtons selectedFlatRows={selectedFlatRows} />
         )}
-        {/* <ExportButtons selectedFlatRows={selectedFlatRows} /> */}
-        {/* <RowSelectionPreview selectedFlatRows={selectedFlatRows} /> */}
 
       </div>
 
       {/* Table */}
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render("Header")}
-                  <span>
-                    {column.isSorted ? (
-                      <BsArrowBarUp className="inline" />
-                    ) : (
-                      ""
-                    )}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
+      <div className=" overflow-x-scroll " >
+        <table {...getTableProps()} >
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}  >
+                {headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                    {column.render("Header")}
+                    <span>
+                      {column.isSorted ? (
+                        <BsArrowBarUp className="inline" />
+                      ) : (
+                        ""
+                      )}
+                    </span>
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
 
-        <tbody {...getTableBodyProps()}>
-          {page.length ? (
-            page.map((row) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  ))}
-                </tr>
-              );
-            })
-          ) : (
-            <tr>
-              <td colSpan={columns.length}>No records found</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-
-      <div className="bg-[var(--bg-primary)] flex items-center rounded-b-2xl px-2 h-[0.8rem]"></div>
+          <tbody {...getTableBodyProps()}  >
+            {page.length ? (
+              page.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()}  >
+                    {row.cells.map((cell) => (
+                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    ))}
+                  </tr>
+                );
+              })
+            ) : (
+              <tr>
+                <td colSpan={columns.length}>No records found</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+      <div className=" bg-[var(--bg-primary)] flex items-center rounded-b-2xl px-2 h-[0.8rem]"></div> 
       <Spacer height="1.5rem" />
 
       {/* Pagination */}

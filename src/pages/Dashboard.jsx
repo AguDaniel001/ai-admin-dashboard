@@ -6,7 +6,6 @@ import Spacer from '../components/Spacer'
 import Icon from '../components/font/Icon'
 import Text from '../components/font/Text'
 import { FaRegCalendar, FaRedoAlt } from 'react-icons/fa'
-import { FaBars } from 'react-icons/fa6'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import Button from '../components/Button'
@@ -34,7 +33,7 @@ function Dashboard() {
   ])
 
   return (
-    <div className='px-10 py-6'>
+    <div className='page-padding'>
       <div className='h-screen flex flex-col gap-5'>
 
         {/* Header */}
@@ -108,32 +107,33 @@ function Dashboard() {
         <Spacer height="0rem" />
 
         {/* Stats Row */}
-        <div className='flex gap-5'>
-  <LineChartStats
-    title="Total Conversations"
-    label="Chatbot"
-    jsonPath="/data/chatbot.json"
-    dateRange={dateRange[0]}
-  />
+        <div className='flex gap-5 max-md:flex-col'>
+          <LineChartStats
+            title="Total Conversations"
+            label="Chatbot"
+            dataKey="chatbot"
+            dateRange={dateRange[0]}
+          />
 
-  <LineChartStats
-    title="Lead Growth"
-    label="Leads"
-    jsonPath="/data/leads.json"
-    dateRange={dateRange[0]}
-  />
+          <LineChartStats
+            title="Lead Growth"
+            label="Leads"
+            dataKey="leads"
+            dateRange={dateRange[0]}
+          />
 
-  <LineChartStats
-    title="Customer Feedback"
-    label="Feedback"
-    jsonPath="/data/feedback.json"
-    dateRange={dateRange[0]}
-  />
-</div>
+          <LineChartStats
+            title="Customer Feedback"
+            label="Feedback"
+            dataKey="feedback"
+            dateRange={dateRange[0]}
+          />
+        </div>
+
 
 
         {/* Charts Row */}
-        <div className='flex gap-5 h-[410px]'>
+        <div className='flex gap-5 h-[410px] max-xl:flex-col'>
           <LeadBarStats dateRange={dateRange[0]} />
           <LineChartStats dateRange={dateRange[0]} />
         </div>

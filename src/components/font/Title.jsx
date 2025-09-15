@@ -1,10 +1,16 @@
-// src/components/Title.jsx
 import React from "react";
 import Text from "./Text";
 
-export default function Title({ children, ...props }) {
+export default function Title({
+  level = 1,
+  size = "xl",
+  weight = "bold",
+  children,
+  ...props
+}) {
+  const Tag = `h${level}`; // h1, h2, h3...
   return (
-    <Text tag="h1" size="2xl" weight="bold" {...props}>
+    <Text tag={Tag} size={size} weight={weight} {...props}>
       {children}
     </Text>
   );

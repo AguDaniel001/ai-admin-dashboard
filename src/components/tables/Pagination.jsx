@@ -15,9 +15,9 @@ const Pagination = ({
   pageCount,
 }) => {
   return (
-    <div className="flex justify-between items-end">
+    <div className="flex justify-between items-end max-xl:flex-col-reverse max-xl:gap-4">
       
-      <div className="flex gap-3">
+      <div className="flex gap-3  ">
 
         <SubText size="sm" className="!font-medium " >
            Showing <span className="text-[var(--text)] font-bold ">{pageIndex + 1}</span> to <span className="text-[var(--text)] font-bold">{pageOptions.length}</span> of <span className="text-[var(--text)] font-bold">200</span > results

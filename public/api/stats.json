@@ -1,14 +1,23 @@
 {
-  "chatbot": [
-    { "date": "2025-08-01", "value": 120 },
-    { "date": "2025-08-02", "value": 150 }
-  ],
-  "leads": [
-    { "date": "2025-08-01", "value": 45 },
-    { "date": "2025-08-02", "value": 65 }
-  ],
-  "feedback": [
-    { "date": "2025-08-01", "value": 4.5 },
-    { "date": "2025-08-02", "value": 4.2 }
-  ]
+  "chatbot": {
+    "total": 270,
+    "data": [
+      { "date": "2025-08-01", "value": 120 },
+      { "date": "2025-08-02", "value": 150 }
+    ]
+  },
+  "leads": {
+    "total": 110,
+    "data": [
+      { "date": "2025-08-01", "value": 45 },
+      { "date": "2025-08-02", "value": 65 }
+    ]
+  },
+  "feedback": {
+    "average": 4.35,
+    "data": [
+      { "date": "2025-08-01", "value": 4.5 },
+      { "date": "2025-08-02", "value": 4.2 }
+    ]
+  }
 }

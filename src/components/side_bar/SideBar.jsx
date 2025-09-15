@@ -1,48 +1,58 @@
 import React from 'react'
-
-import NavBtnList from './NavBtnList'
-import { FaHome, FaTasks } from 'react-icons/fa'
+import { FaArrowLeft } from 'react-icons/fa6'
+import { FaHome } from 'react-icons/fa'
+import { FaMessage, FaPeopleGroup } from 'react-icons/fa6'
 import Spacer from '../Spacer'
-import { FaMessage, FaPeopleGroup, FaPeopleLine } from 'react-icons/fa6'
-import { useLocation } from 'react-router';
 import SubText from '../font/SubText'
+import Button from '../Button'
+import NavBtnList from './NavBtnList'
 
-function SideBar() {
+function SideBar({ isOpen, onClose }) {
+  const navItems = [
+    { name: 'Dashboard', icon: <FaHome />, href: '/' },
+    { name: 'Leads', icon: <FaPeopleGroup />, href: '/leads' },
+    { name: 'Messages', icon: <FaMessage />, href: '/messages' },
+  ]
+
   return (
-    <div  className='w-[220px] bg-[var(--bg-primary)] h-screen  p-[18px] rounded-r-3xl'>
+    <>
+      {/* Overlay (mobile only) */}
+      <div
+        className={`
+          fixed inset-0 bg-black/50 z-40 transition-opacity duration-300
+          md:hidden
+          ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}
+        `}
+        onClick={onClose}
+      />
 
+      {/* Sidebar */}
+      <div
+        className={`
+          top-0 left-0 rounded-r-3xl h-screen z-50 pl-3 pr-3
+          bg-[var(--bg-primary)] transition-transform duration-300
+          w-[210px] max-lg:w-[90px] max-md:absolute max-md:w-[200px]
+          md:translate-x-0
+          ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+        `}
+      >
+        {/* Header */}
+        <div className="flex justify-between items-center h-[45px] px-3">
+          <h1 className="uppercase max-lg:hidden">O m l i v i o n</h1>
+          <h1 className="min-lg:hidden font-extrabold text-2xl">O</h1>
+          <Button className="md:hidden icon" onClick={onClose}>
+            <FaArrowLeft />
+          </Button>
+        </div>
 
-      <h1 className='uppercase '>O m l i v i o n</h1>
-      <Spacer height='3rem' />
-      <SubText className="uppercase" >Pages</SubText>
-      <Spacer height='1rem' />
-      {/* <Image className="" name="" /> */}
-      <NavBtnList 
-        navItems={[
-          {
-            name: 'Dashboard',
-            icon: <FaHome />,
-            // current: true,
-            href: '/'
-          },
-          {
-            name: 'Leads',
-            icon: <FaPeopleGroup /> ,
-            // current: false,
-            href: '/leads'
-          },
-          {
-            name: 'Messages',
-            icon: <FaMessage /> ,
-            // current: false,
-            href: '/messages'
-          },
-      
+        <Spacer height="3rem" />
+        <SubText className="uppercase">Pages</SubText>
+        <Spacer height="1rem" />
 
-        ]}
-        />
-
-    </div>
+        {/* Nav Button List */}
+        <NavBtnList navItems={navItems} onClick={onClose} />
+      </div>
+    </>
   )
 }
 

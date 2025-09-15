@@ -1,9 +1,17 @@
 import React from "react";
 import Text from "./Text";
 
-export default function Subtitle({ children, ...props }) {
+export default function Subtitle({
+  level = 2, // semantic default
+  size = "md", 
+  weight = "semibold",
+  color = "default",
+  children,
+  ...props
+}) {
+  const Tag = `h${level}`;
   return (
-    <Text tag="h2" size="base" weight="semibold" color="default" {...props}>
+    <Text tag={Tag} size={size} weight={weight} color={color} {...props}>
       {children}
     </Text>
   );

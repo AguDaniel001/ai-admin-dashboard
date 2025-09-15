@@ -11,7 +11,7 @@ import { FaEllipsisH } from "react-icons/fa";
 export default function LineChartStats({
   title,
   label,
-  jsonPath,  // path to JSON file for this chart
+  dataKey,   // "chatbot" | "leads" | "feedback"
   height = "16px",
   dateRange
 }) {
@@ -20,15 +20,24 @@ export default function LineChartStats({
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(jsonPath);
+        const response = await fetch("/data/stats.json");
         const data = await response.json();
-        setChartData(data || []);
+
+        if (data[dataKey]) {
+          setChartData(data[dataKey]);
+        }
       } catch (error) {
         console.error("Error fetching chart data:", error);
       }
     }
     fetchData();
-  }, [jsonPath, dateRange]);
+  }, [dataKey, dateRange]);
+
+  const metric =
+    chartData?.total ??
+    chartData?.average ??
+    chartData?.sum ??
+    0;
 
   return (
     <div className="card box-shadow">
@@ -44,15 +53,13 @@ export default function LineChartStats({
       <SubText className="uppercase">{label}</SubText>
       <Spacer height="0.2rem" />
 
-      <Title className="borde">
-        {chartData?.[0]?.uv ?? "0"}
-      </Title>
+      <Title className="borde">{metric}</Title>
 
       <Spacer height={height} />
 
-      {chartData.length > 0 && (
+      {chartData?.data && (
         <LineChart
-          data={chartData}
+          data={chartData.data}
           dateRange={dateRange}
           height={140}
         />

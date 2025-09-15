@@ -1,15 +1,15 @@
-// src/components/Text.jsx
 import React from "react";
 import clsx from "clsx";
 
 const sizes = {
   xs: "text-xs",
   sm: "text-sm",
-  md: "text-base",
-  lg: "text-lg",
-  xl: "text-2xl",
-  "2xl": "text-3xl",
-  "3xl": "text-4xl",
+  base: "text-base",
+  md: "text-md",
+  lg: "text-lg sm:text-xl md:text-2xl",
+  xl: "text-xl sm:text-2xl md:text-3xl",
+  "2xl": "text-2xl sm:text-3xl md:text-4xl",
+  "3xl": "text-3xl sm:text-4xl md:text-5xl",
 };
 
 const weights = {
@@ -29,11 +29,21 @@ const colors = {
   black: "text-black",
 };
 
+const leading = {
+  none: "leading-none",
+  tight: "leading-tight",
+  snug: "leading-snug",
+  normal: "leading-normal",
+  relaxed: "leading-relaxed",
+  loose: "leading-loose",
+};
+
 export default function Text({
   tag: Tag = "p",
   size = "sm",
   weight = "normal",
   color = "default",
+  lineHeight = "normal",
   className,
   children,
   ...props
@@ -44,7 +54,8 @@ export default function Text({
         sizes[size],
         weights[weight],
         colors[color],
-        "leading-snu text-left",
+        leading[lineHeight],
+        "text-left",
         className
       )}
       {...props}
