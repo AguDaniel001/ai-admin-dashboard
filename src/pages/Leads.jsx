@@ -4,12 +4,8 @@ import { DataTable } from '../components/tables/DataTable'
 
 function Leads() {
   return (
-    <div className=' page-padding '>
-      <div className='h-screen' >
-
-        <DataTable />
-    
-      </div>
+    <div className=' page-padding'>
+      <DataTable />
     </div>
   )
 }

@@ -11,9 +11,9 @@ export const GlobalFilter = ({ filter, setFilter }) => {
   }, [value, setFilter])
 
   return (
-    <span>
+    <span className='w-full'>
       {" "}
-      <input type="text" placeholder='Search' className=' outline-0 text-[var(--text)] text-sm '  value={value || ""}
+      <input type="text" placeholder='Search' className=' outline-0 text-[var(--text)] text-sm w-full '  value={value || ""}
         onChange={(e) => setValue(e.target.value)} />
     </span>
   )

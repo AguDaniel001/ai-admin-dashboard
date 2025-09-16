@@ -12,17 +12,19 @@ function NavBtn({ name, icon, href, onClick }) {
         to={href}
         onClick={onClick}   
         
-        className={`flex gap-4 items-center w-full rounded-[6px] h-[40px] px-[20px] 
+        className={`flex items-center w-full rounded-[6px] h-[40px] px-[20px] 
           transition-colors duration-100 text-sm font-medium hover:text-[var(--text)]
-          ${isActive ? 'bg-gradient-to-r from-[#5546a186] to-[#5546a11e] hover:text-[var(--title)]' : ''}
+          ${isActive ? 'bg-gradient-to-r from-[var(--color-primary)]/20 to-[var(--color-primary)]/7 hover:text-[var(--title)]' : ''}
         `}
       >
-        <Icon
-          className={`text-[1.1rem] ${isActive ? 'text-[var(--color-primary)]!' : 'text-[var(--text-muted)]'}`}
-        >
-          {icon}
-        </Icon>
-        <span className="max-lg:!hidden max-md:!block">{name}</span>
+        <div className='flex gap-3'>
+          <Icon
+            className={`text-[1.2rem] ${isActive ? 'text-[var(--color-primary)]!' : 'text-[var(--text-muted)]'}`}
+          >
+            {icon}
+          </Icon>
+          <span className="max-lg:!hidden max-md:!block">{name}</span> 
+        </div>
       </Link>
     </li>
   )

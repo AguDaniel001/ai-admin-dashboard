@@ -46,8 +46,8 @@
 
   .button-icon {
     @apply
-    px-[0.6rem]!
-    text-[1rem]!
+    !px-[0.6rem]
+    !text-[1rem]
     ;
   }
 
@@ -65,7 +65,7 @@
 
   .page-padding {
     @apply 
-    px-10 py-6
+    px-10 pt-6 pb-6
     max-md:px-5
     ;
   }
@@ -77,10 +77,10 @@
     !bg-[var(--transparent)]
     !border-0
     !text-xl
-    !text-[var(--text)]
-    hover:!text-[var(--title)]
+    !text-[var(--text-muted)]
+    hover:!text-[var(--text)]
 
-    max-md:!text-base
+    max-md:!text-lg
     ;
   }
 

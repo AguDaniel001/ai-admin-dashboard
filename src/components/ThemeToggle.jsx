@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BsMoon, BsSun } from 'react-icons/bs';
+import { LuSun, LuSunDim } from 'react-icons/lu';
+import { FaRegMoon } from 'react-icons/fa';
+import { FiMoon, FiSun } from 'react-icons/fi';
 import Button from './Button'
 
 function ThemeToggle() {
@@ -24,7 +27,7 @@ function ThemeToggle() {
         onClick={toggleTheme}
         className=" icon "
       >
-        {theme === "light" ? <BsMoon /> : <BsSun />}
+        {theme === "light" ? <FiMoon /> : <FiSun/>}
       </Button>
 
     </div>

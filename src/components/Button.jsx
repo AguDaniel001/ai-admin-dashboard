@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 
 const baseStyles =
-  "inline-block  text-sm rounded-lg font-medium transition duration-100 ease-in-out h-[2.2rem] px-[0.8rem] border-0 hover:bg-[var(--bg-primary)]/90 ";
+  "inline-block  text-sm rounded-lg font-medium transition duration-100 ease-in-out h-[2rem] px-[0.8rem] border-0 hover:bg-[var(--bg-primary)]/90 cursor-pointer ";
 
 const variants = {
   primary: "bg-white text-black hover:bg-brand-dark focus:ring-brand",

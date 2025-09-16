@@ -97,7 +97,7 @@ const SimpleBarChart = ({ dateRange }) => {
 
           <Bar
             dataKey="conversations"
-            fill="#56adff"
+            fill={`var(--color-primary)`}
             radius={[4, 4, 0, 0]}
             barSize={20}
           />

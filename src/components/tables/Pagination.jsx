@@ -2,6 +2,11 @@ import React from "react";
 import Button from "../Button"
 import Spacer from "../Spacer";
 import SubText from "../font/SubText";
+
+import { FaFastForward, FaFastBackward, FaStepForward, FaStepBackward } from 'react-icons/fa';
+import { BsFastForwardFill, BsFillPlayFill } from 'react-icons/bs';
+import Icon from "../font/Icon";
+
 const Pagination = ({
   pageIndex,
   pageOptions,
@@ -41,7 +46,7 @@ const Pagination = ({
         
       </div>
 
-      <div>
+      <div className="flex items-center" >
         <select
           className="icon-card focus:outline-none text-[var(--text)] font-medium text-sm "
           value={pageSize}
@@ -53,17 +58,22 @@ const Pagination = ({
             </option>
           ))}
         </select>
+
+
+        <div className="flex text-[var(--text-muted)]">
         <Spacer display="inline-block" width="1rem"/>
 
-        <Button onClick={() => gotoPage(0)} disabled={!canPreviousPage} variant='outline'>{"<<"}</Button>
+        <Button onClick={() => gotoPage(0)} disabled={!canPreviousPage} variant='outline'><Icon className="rotate-180 text-[var(--text-muted)]" ><BsFastForwardFill /></Icon></Button>
         <Spacer display="inline-block" width="0.5rem"/>
-        <Button onClick={previousPage} disabled={!canPreviousPage} variant='outline'>Previous</Button>
+        <Button onClick={previousPage} disabled={!canPreviousPage} variant='outline'><Icon className="rotate-180 text-[var(--text-muted)]"><BsFillPlayFill /></Icon></Button>
 
         <Spacer display="inline-block" width="1rem"/>
 
-        <Button onClick={nextPage} disabled={!canNextPage} variant='outline'>Next</Button>
+        <Button onClick={nextPage} disabled={!canNextPage} variant='outline'><Icon className="text-[var(--text-muted)]"><BsFillPlayFill /></Icon></Button>
         <Spacer display="inline-block" width="0.5rem"/>
-        <Button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage} variant='outline'>{">>"}</Button>
+        <Button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage} variant='outline'>
+          <Icon className="text-[var(--text-muted)]" ><BsFastForwardFill /></Icon></Button>
+        </div>
       </div>
       
       

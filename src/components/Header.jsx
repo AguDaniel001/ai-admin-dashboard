@@ -4,6 +4,7 @@ import Button from './Button'
 import { FaBars } from 'react-icons/fa6';
 import Icon from './font/Icon';
 import { BsSearch } from 'react-icons/bs';
+import { RiSearch2Line } from 'react-icons/ri';
 
 function Header({ onOpen }) {
   return (
@@ -11,7 +12,7 @@ function Header({ onOpen }) {
       <div className='flex items-center h-[60px] justify-between min-md:justify-end max-md:px-5 max-md:h-[45px]'>
 
         <Button 
-          className="min-md:hidden max-md:block icon"
+          className="min-md:hidden max-md:block icon max-md:!text-xl "
           onClick={onOpen}
         >
           <FaBars />
@@ -21,7 +22,7 @@ function Header({ onOpen }) {
             className="button-icon text-[var(--text-muted)] min-lg:hidden icon "
             onClick={() => setShowToggle(!showToggle)}
           >
-            <Icon ><BsSearch /></Icon>
+            <Icon ><RiSearch2Line /></Icon>
           </Button>
 
           <ThemeToggle />

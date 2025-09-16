@@ -1,7 +1,10 @@
 import React from 'react'
 import { FaArrowLeft } from 'react-icons/fa6'
-import { FaHome } from 'react-icons/fa'
-import { FaMessage, FaPeopleGroup } from 'react-icons/fa6'
+import { FaMessage, FaHouse, FaPeopleGroup } from 'react-icons/fa6'
+import { BsChatLeft } from 'react-icons/bs';
+import { PiHouse, PiHouseBold } from 'react-icons/pi';
+import { HiOutlineUserPlus, HiOutlineUsers } from 'react-icons/hi2';
+import { BiMessage } from 'react-icons/bi';
 import Spacer from '../Spacer'
 import SubText from '../font/SubText'
 import Button from '../Button'
@@ -9,9 +12,9 @@ import NavBtnList from './NavBtnList'
 
 function SideBar({ isOpen, onClose }) {
   const navItems = [
-    { name: 'Dashboard', icon: <FaHome />, href: '/' },
-    { name: 'Leads', icon: <FaPeopleGroup />, href: '/leads' },
-    { name: 'Messages', icon: <FaMessage />, href: '/messages' },
+    { name: 'Dashboard', icon: <PiHouseBold />, href: '/' },
+    { name: 'Leads', icon: <HiOutlineUsers />, href: '/leads' },
+    { name: 'Messages', icon: <BiMessage />, href: '/messages' },
   ]
 
   return (

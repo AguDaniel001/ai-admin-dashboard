@@ -18,8 +18,10 @@ const LineChart = ({ data = [], dateRange, height = 150, className }) => {
         <ComposedChart data={filteredData} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
           <defs>
             <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#8071b0" stopOpacity={0.32} />
-              <stop offset="90%" stopColor="#8071b0" stopOpacity={0} />
+              <stop offset="0%" stopColor={`var(--color-primary)`} stopOpacity={0.3} />
+              <stop offset="40%" stopColor={`var(--color-primary)`} stopOpacity={0.2} />
+              <stop offset="100%" stopColor={`var(--color-primary)`} stopOpacity={0} />
+              {/* <stop offset="90%" stopColor="#8071b0" stopOpacity={0} /> */}
             </linearGradient>
           </defs>
 
@@ -35,7 +37,7 @@ const LineChart = ({ data = [], dateRange, height = 150, className }) => {
           <Line
             type="monotone"
             dataKey="value"
-            stroke="#a78bfa"
+            stroke={`var(--color-primary)`}
             strokeWidth={2}
             dot={false}
           />

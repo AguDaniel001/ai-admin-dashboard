@@ -22,9 +22,14 @@ import Subtitle from "../font/SubTitle";
 import Icon from "../font/Icon";
 import Button from "../Button";
 import Text from "../font/Text";
-import { BsArrowBarUp, BsSearch, } from "react-icons/bs";
+import { BsArrowBarUp, BsCalendar2, BsSearch, BsToggles, BsToggles2,   } from "react-icons/bs";
 import { FaDownload, FaRedoAlt, FaRegCalendar } from "react-icons/fa";
 import { AiOutlineEye } from "react-icons/ai";
+import { MdSettings } from "react-icons/md";
+import { BiRefresh } from 'react-icons/bi';
+import { HiOutlineRefresh } from 'react-icons/hi';
+import { FiSearch } from 'react-icons/fi';
+import { RiSearch2Line } from 'react-icons/ri';
 import { format, isWithinInterval, isAfter, isBefore } from "date-fns";
 
 import RangePicker from "../calendar/RangePicker";
@@ -157,8 +162,8 @@ export const DataTable = () => {
         </div>
 
         {/* Search */}
-        <div className="icon-card flex gap-3 items-center rounded-full px-5 py-0 bg-[var(--bg-secondary)] max-lg:px-2.5 max-lg:bg-[var(--bg-primary)] max-lg:rounded-lg  max-md:flex">
-          <Icon className="text-[var(--text-muted)]" ><BsSearch /></Icon>
+        <div className="icon-card  flex gap-2 items-center bg-[var(--bg-secondary)] max-lg:px-2.5 ">
+          <Icon className="text-[var(--text-muted)]" ><RiSearch2Line /></Icon>
           <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         </div>
 
@@ -169,7 +174,7 @@ export const DataTable = () => {
             className="button-icon text-[var(--text-muted)]"
             onClick={() => setShowToggle(!showToggle)}
           >
-            <Icon><AiOutlineEye /></Icon>
+            <Icon><BsToggles2 /></Icon>
           </Button>
           
 
@@ -181,7 +186,7 @@ export const DataTable = () => {
                 setShowCalendar((prev) => !prev);
               }}
             >
-              <Icon className="text-[var(--text-muted)]" ><FaRegCalendar /></Icon>
+              <Icon className="text-[var(--text-muted)]" ><BsCalendar2 /></Icon>
               <Text>
                 {dateRange[0].startDate && dateRange[0].endDate
                   ? `${format(dateRange[0].startDate, "dd MMM yyyy")} - ${format(
@@ -213,7 +218,7 @@ export const DataTable = () => {
                 ])
               }
             >
-              <Icon><FaRedoAlt /></Icon>
+              <Icon><HiOutlineRefresh /></Icon>
             </Button>
           </div>
         </div>

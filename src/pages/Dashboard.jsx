@@ -33,9 +33,8 @@ function Dashboard() {
   ])
 
   return (
-    <div className='page-padding'>
-      <div className='h-screen flex flex-col gap-5'>
 
+      <div className='page-padding flex flex-col gap-5'>
         {/* Header */}
         <div className='flex justify-between relative'>
           <Title>Dashboard</Title>
@@ -138,7 +137,6 @@ function Dashboard() {
           <LineChartStats dateRange={dateRange[0]} />
         </div>
       </div>
-    </div>
   )
 }
 
