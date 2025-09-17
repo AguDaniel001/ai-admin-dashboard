@@ -22,13 +22,10 @@ import Subtitle from "../font/SubTitle";
 import Icon from "../font/Icon";
 import Button from "../Button";
 import Text from "../font/Text";
-import {
-  BsArrowBarUp,
-  BsCalendar2,
-  BsToggles2,
-} from "react-icons/bs";
+import { BsArrowBarUp } from "react-icons/bs";
 import { CgCalendar } from 'react-icons/cg';
-import { FaDownload } from "react-icons/fa";
+import { LuFileDown } from 'react-icons/lu';
+import { IoMdSwitch } from 'react-icons/io';
 import { HiOutlineRefresh } from "react-icons/hi";
 import { RiSearch2Line } from "react-icons/ri";
 import { format, isWithinInterval, isAfter, isBefore } from "date-fns";
@@ -154,7 +151,7 @@ export const DataTable = () => {
             onClick={columnToggle.toggle}
           >
             <Icon>
-              <BsToggles2 />
+              <IoMdSwitch />
             </Icon>
           </Button>
 
@@ -207,8 +204,8 @@ export const DataTable = () => {
 
         <div ref={exportToggle.ref} className="relative">
           <Button variant="none" onClick={exportToggle.toggle}>
-            <Icon>
-              <FaDownload />
+            <Icon className="icon">
+              <LuFileDown />
             </Icon>
           </Button>
           {exportToggle.isOpen && (
