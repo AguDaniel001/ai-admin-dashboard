@@ -5,7 +5,9 @@ import LeadBarStats from '../components/charts/LeadBarStats'
 import Spacer from '../components/Spacer'
 import Icon from '../components/font/Icon'
 import Text from '../components/font/Text'
-import { FaRegCalendar, FaRedoAlt } from 'react-icons/fa'
+import { HiOutlineRefresh } from "react-icons/hi";
+import { CgCalendar } from 'react-icons/cg';
+import { BsCalendar2 } from "react-icons/bs";
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import Button from '../components/Button'
@@ -49,7 +51,7 @@ function Dashboard() {
                   setShowCalendar((prev) => !prev)
                 }}
               >
-                <Icon className="text-[var(--text-muted)]"><FaRegCalendar /></Icon>
+                <Icon className="text-[var(--text-muted)]"><CgCalendar /></Icon>
                 <Text>
                   {dateRange[0].startDate && dateRange[0].endDate
                     ? `${format(dateRange[0].startDate, "dd MMM yyyy")} - ${format(
@@ -75,7 +77,7 @@ function Dashboard() {
                   ])
                 }
               >
-                <Icon><FaRedoAlt /></Icon>
+                <Icon><HiOutlineRefresh /></Icon>
               </Button>
 
               {/* Calendar Popup */}

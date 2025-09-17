@@ -1,29 +1,25 @@
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
-export function useToggle(initialValue = false) {
-  const [isOpen, setIsOpen] = useState(initialValue);
+export function useToggle({ closeOnOutside = false } = {}) {
+  const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
 
-  const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
-  const setTrue = useCallback(() => setIsOpen(true), []);
-  const setFalse = useCallback(() => setIsOpen(false), []);
+  const toggle = useCallback(() => setIsOpen(prev => !prev), []);
+  const open = useCallback(() => setIsOpen(true), []);
+  const close = useCallback(() => setIsOpen(false), []);
 
-  // Close when clicking outside
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
+    if (!closeOnOutside || !isOpen) return;
+
+    function handleClickOutside(e) {
+      if (ref.current && !ref.current.contains(e.target)) {
         setIsOpen(false);
       }
     }
 
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen, closeOnOutside]);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen]);
-
-  return { isOpen, toggle, setTrue, setFalse, ref };
+  return { isOpen, toggle, open, close, ref };
 }
