@@ -5,7 +5,7 @@ import Button from './Button'
 
 function CardBox({ imageName, iconName, iconClassName, titleText, subText, btnText, btnClassName}) {
   return (
-    <div className=' max-w-[360px] mx-auto z-[2]' >
+    <div className=' max-w-[360px] mx-auto z-[2] ' >
      <div>
       <Image imageName={iconName} className={` w-[70px] h-[70px] mx-auto max-sm:w-[40px] max-sm:h-[40px] ${iconClassName} `} />
      </div>

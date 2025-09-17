@@ -11,17 +11,17 @@
   }
 
   table th {
-    @apply  px-2 py-3 pl-5 ;
+    @apply  px-2 py-3 pl-5  ;
   }
 
   thead tr,
   tfoot tr {
-    @apply bg-[var(--bg-primary)]/90  text-[var(--text)]  uppercase text-xs text-center;
+    @apply bg-[var(--bg-primary)]/90  text-[var(--text)]  uppercase text-xs text-center duration-300 ease-in-out;
   }
 
    table th, tbody tr {
     @apply
-      border-t border-[var(--border-outline)]
+      border-t border-[var(--border-outline)] duration-300 ease-in-out
       
     ;
    }

@@ -25,9 +25,10 @@ import Text from "../font/Text";
 import { BsArrowBarUp } from "react-icons/bs";
 import { CgCalendar } from 'react-icons/cg';
 import { LuFileDown } from 'react-icons/lu';
-import { IoMdSwitch } from 'react-icons/io';
 import { HiOutlineRefresh } from "react-icons/hi";
 import { RiSearch2Line } from "react-icons/ri";
+import { LuSettings2 } from 'react-icons/lu';
+
 import { format, isWithinInterval, isAfter, isBefore } from "date-fns";
 
 import RangePicker from "../calendar/RangePicker";
@@ -136,7 +137,7 @@ export const DataTable = () => {
         <Title>Leads</Title>
 
         {/* Search */}
-        <div className="icon-card flex gap-2 items-center bg-[var(--bg-secondary)] max-lg:px-2.5">
+        <div className="icon-card flex gap-2 items-center bg-[var(--bg-secondary)] max-lg:px-2.5 duration-300 ease-in-out ">
           <Icon className="text-[var(--text-muted)]">
             <RiSearch2Line />
           </Icon>
@@ -151,7 +152,7 @@ export const DataTable = () => {
             onClick={columnToggle.toggle}
           >
             <Icon>
-              <IoMdSwitch />
+              <LuSettings2 />
             </Icon>
           </Button>
 
@@ -199,7 +200,7 @@ export const DataTable = () => {
       <Spacer height="1.8rem" />
 
       {/* Table Header with Export */}
-      <div className="bg-[var(--bg-primary)] flex justify-between items-center rounded-t-2xl px-5 h-[3.5rem]">
+      <div className="bg-[var(--bg-primary)] flex justify-between items-center rounded-t-2xl px-5 h-[3.5rem] duration-300 ease-in-out">
         <Subtitle>All Customers</Subtitle>
 
         <div ref={exportToggle.ref} className="relative">
@@ -255,7 +256,7 @@ export const DataTable = () => {
         </table>
       </div>
 
-      <div className="bg-[var(--bg-primary)] h-[0.8rem] rounded-b-2xl"></div>
+      <div className="bg-[var(--bg-primary)] h-[0.8rem] rounded-b-2xl duration-300 ease-in-out "></div>
       <Spacer height="1.5rem" />
 
       {/* Pagination */}

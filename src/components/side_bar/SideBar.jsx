@@ -1,9 +1,9 @@
 import React from 'react'
 import { FaArrowLeft } from 'react-icons/fa6'
-import { FaMessage, FaHouse, FaPeopleGroup } from 'react-icons/fa6'
-import { BsChatLeft } from 'react-icons/bs';
-import { PiHouse, PiHouseBold } from 'react-icons/pi';
-import { HiOutlineUserPlus, HiOutlineUsers } from 'react-icons/hi2';
+import { PiHouseBold } from 'react-icons/pi';
+import { HiOutlineUsers } from 'react-icons/hi2';
+
+import { RiSettings4Line } from 'react-icons/ri';
 import { BiMessage } from 'react-icons/bi';
 import Spacer from '../Spacer'
 import SubText from '../font/SubText'
@@ -15,6 +15,7 @@ function SideBar({ isOpen, onClose }) {
     { name: 'Dashboard', icon: <PiHouseBold />, href: '/' },
     { name: 'Leads', icon: <HiOutlineUsers />, href: '/leads' },
     { name: 'Messages', icon: <BiMessage />, href: '/messages' },
+    { name: 'Settings', icon: <RiSettings4Line />, href: '/settings' },
   ]
 
   return (
@@ -22,7 +23,7 @@ function SideBar({ isOpen, onClose }) {
       {/* Overlay (mobile only) */}
       <div
         className={`
-          fixed inset-0 bg-black/50 z-40 transition-opacity duration-300
+          fixed inset-0 bg-black/30 z-40 transition-opacity duration-300
           md:hidden
           ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}
         `}
@@ -33,14 +34,14 @@ function SideBar({ isOpen, onClose }) {
       <div
         className={`
           top-0 left-0 rounded-r-3xl h-screen z-50 pl-3 pr-3
-          bg-[var(--bg-primary)] transition-transform duration-300
+          bg-[var(--bg-primary)]
           w-[210px] max-lg:w-[90px] max-md:absolute max-md:w-[200px]
-          md:translate-x-0
+          md:translate-x-0 duration-300 ease-in-out max-sm:w-[160px]
           ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
         `}
       >
         {/* Header */}
-        <div className="flex justify-between items-center h-[45px] px-3">
+        <div className="flex justify-between items-center h-[45px] ">
           <h1 className="uppercase max-lg:hidden">O m l i v i o n</h1>
           <h1 className="min-lg:hidden font-extrabold text-2xl">O</h1>
           <Button className="md:hidden icon" onClick={onClose}>

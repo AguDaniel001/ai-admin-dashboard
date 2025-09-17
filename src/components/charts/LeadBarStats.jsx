@@ -26,7 +26,7 @@ export default function LeadLineStats({
       <Spacer height="1rem"/>
       <div className="px-5">
         <Spacer height="0.2rem"/>
-        <Title className='borde ' >$8.25K <Badge isSuccess={false} >-19%</Badge> </Title>
+        <Title className='borde ' >$8.25K <Badge isSuccess={true} >+19%</Badge> </Title>
       </div>
       
       <Spacer height={height}/>

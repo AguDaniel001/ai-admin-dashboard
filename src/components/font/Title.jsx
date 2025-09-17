@@ -3,7 +3,7 @@ import Text from "./Text";
 
 export default function Title({
   level = 1,
-  size = "xl",
+  size = "3xl",
   weight = "bold",
   children,
   ...props

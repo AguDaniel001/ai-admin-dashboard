@@ -48,7 +48,7 @@ const Pagination = ({
 
       <div className="flex items-center" >
         <select
-          className="icon-card focus:outline-none text-[var(--text)] font-medium text-sm "
+          className="icon-card focus:outline-none text-[var(--text)] font-medium text-sm duration-300 ease-in-out"
           value={pageSize}
           onChange={(e) => setPageSize(Number(e.target.value))}
         >

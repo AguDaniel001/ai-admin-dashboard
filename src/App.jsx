@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Dashboard from './pages/Dashboard';
 import Leads from './pages/Leads';
 import Messages from './pages/Messages';
+import Settings from './pages/Settings';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/' element={<Dashboard />} />
                 <Route path='/leads' element={<Leads />} />
                 <Route path='/messages' element={<Messages />} />
+                <Route path='/settings' element={<Settings />} />
               </Routes>
             </div>
 

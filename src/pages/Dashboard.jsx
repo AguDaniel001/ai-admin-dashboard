@@ -17,8 +17,11 @@ import { format } from "date-fns"
 import { useStickyState } from "../components/tables/useStickyState"
 import { DefinedRange } from 'react-date-range'
 
+import { useToggle } from "../hooks/useToggle";
+
 function Dashboard() {
-  const [showCalendar, setShowCalendar] = useState(false)
+
+  const calendarToggle = useToggle({ closeOnOutside: true });
 
 
   //Defined range
@@ -36,7 +39,7 @@ function Dashboard() {
 
   return (
 
-      <div className='page-padding flex flex-col gap-5'>
+      <div className='page-padding flex flex-col gap-5 '>
         {/* Header */}
         <div className='flex justify-between relative'>
           <Title>Dashboard</Title>
@@ -48,7 +51,7 @@ function Dashboard() {
                 className="button-icon flex! gap-3 items-center rounded-r-none text-[var(--text-muted)]"
                 onClick={(e) => {
                   e.stopPropagation()
-                  setShowCalendar((prev) => !prev)
+                   calendarToggle.toggle((prev) => !prev)
                 }}
               >
                 <Icon className="text-[var(--text-muted)]"><CgCalendar /></Icon>
@@ -81,8 +84,10 @@ function Dashboard() {
               </Button>
 
               {/* Calendar Popup */}
-              {showCalendar && (
-                <div className=" top-12  right-0 z-20">
+           
+                <div ref={calendarToggle.ref} className=" top-12  right-0 z-20">
+
+                  {calendarToggle.isOpen && (
                   <div className='flex '>
                     <div className='absolute right-80 top-12'>
                       <DefinedRange 
@@ -95,17 +100,18 @@ function Dashboard() {
                     <RangePicker
                       dateRange={dateRange}
                       setDateRange={setDateRange}
-                      setShowCalendar={setShowCalendar}
+                      setShowCalendar={calendarToggle.close}
                     />
                   </div>
+                   )}
                  
                 </div>
-              )}
+          
             </div>
           </div>
         </div>
 
-        <Spacer height="0rem" />
+        {/* <Spacer height="0rem" /> */}
 
         {/* Stats Row */}
         <div className='flex gap-5 max-md:flex-col'>

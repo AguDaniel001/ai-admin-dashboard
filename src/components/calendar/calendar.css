@@ -155,16 +155,13 @@
 }
 
 .rdrDefinedRangesWrapper .rdrStaticRangeSelected {
-  @apply bg-blue-500 text-white;
+  @apply bg-transparent text-[var(--text)];
 }
-/* .rdrInputRanges {
-  @apply 
-  
-  ;
-} */
+
 .rdrInputRanges .rdrInputRange .rdrInputRangeInput {
 @apply 
 border-[var(--border-outline)] text-[var(--text)]
 ;
 }
+
 

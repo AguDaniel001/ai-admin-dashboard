@@ -6,10 +6,10 @@ const sizes = {
   sm: "text-sm",
   base: "text-base",
   md: "text-md",
-  lg: "text-lg sm:text-xl md:text-2xl",
-  xl: "text-xl sm:text-2xl md:text-3xl",
-  "2xl": "text-2xl sm:text-3xl md:text-4xl",
-  "3xl": "text-3xl sm:text-4xl md:text-5xl",
+  lg: "text-lg max-sm:text-md max-md:text-md max-lg:text-md",
+  xl: "text-xl max-sm:text-2xl max-lg:text-md ",
+  "2xl": "text-2xl max-sm:text-3xl max-md:text-4xl",
+  "3xl": "text-3xl max-sm:text-2xl max-lg:text-2xl",
 };
 
 const weights = {
@@ -55,7 +55,7 @@ export default function Text({
         weights[weight],
         colors[color],
         leading[lineHeight],
-        "text-left",
+        "text-left duration-300 ease-in-out",
         className
       )}
       {...props}

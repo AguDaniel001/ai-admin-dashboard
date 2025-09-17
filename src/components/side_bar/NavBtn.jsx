@@ -13,7 +13,7 @@ function NavBtn({ name, icon, href, onClick }) {
         onClick={onClick}   
         
         className={`flex items-center w-full rounded-[6px] h-[40px] px-[20px] 
-          transition-colors duration-100 text-sm font-medium hover:text-[var(--text)]
+          transition-colors text-sm font-medium hover:text-[var(--text)] max-sm:px-[10px]
           ${isActive ? 'bg-gradient-to-r from-[var(--color-primary)]/20 to-[var(--color-primary)]/7 hover:text-[var(--title)]' : ''}
         `}
       >

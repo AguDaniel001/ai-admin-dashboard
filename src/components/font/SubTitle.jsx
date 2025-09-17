@@ -3,7 +3,7 @@ import Text from "./Text";
 
 export default function Subtitle({
   level = 2, // semantic default
-  size = "md", 
+  size = "lg", 
   weight = "semibold",
   color = "default",
   children,
